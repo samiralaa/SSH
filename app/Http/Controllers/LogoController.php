@@ -27,7 +27,7 @@ class LogoController extends Controller
         ]);
 
         // Store the uploaded image file
-        $logoPath = $request->file('logo')->store('logos', 'public');
+        $logoPath = $request->file('logo')->store('logos');
 
         // Create the Logo model instance and save it to the database
         $logo = Logo::create([
