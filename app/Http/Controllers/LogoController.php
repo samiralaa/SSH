@@ -14,7 +14,7 @@ class LogoController extends Controller
     public function index()
     {
         $data = Logo::all()->map(function ($logo) {
-            $logo->logo = 'https://ssh.mqawilk.com/storage/app/logos/' . $logo->logo;
+            $logo->logo = 'https://ssh.mqawilk.com/public/storage/' . $logo->logo;
             return $logo;
         });
 
