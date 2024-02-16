@@ -13,9 +13,12 @@ class LogoController extends Controller
      */
     public function index()
     {
-        $data = Logo::all();
-        return response()->json($data);
+        $data = Logo::all()->map(function ($logo) {
+            $logo->logo = 'https://ssh.mqawilk.com/storage/app/logos/' . $logo->logo;
+            return $logo;
+        });
 
+        return response()->json($data);
     }
 
     public function store(Request $request)
@@ -27,7 +30,7 @@ class LogoController extends Controller
         ]);
 
         // Store the uploaded image file
-        $logoPath = $request->file('logo')->store('logos');
+        $logoPath = $request->file('logo')->store('logos', 'public');
 
         // Create the Logo model instance and save it to the database
         $logo = Logo::create([
