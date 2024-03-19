@@ -54,10 +54,14 @@ return [
     | your application so that it is used when running Artisan tasks.
     |
     */
-
+    'ssl' => [
+        'local_cert' => env('SSL_CERT_PATH'),
+        'local_pk' => env('SSL_KEY_PATH'),
+    ],
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),
+    'encryption_key' => env('ENCRYPTION_KEY'),
 
     /*
     |--------------------------------------------------------------------------

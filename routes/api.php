@@ -27,6 +27,9 @@ Route::apiResource('contact', ContactController::class);
 Route::apiResource('subscribe',SubscribeController::class);
 Route::post('logos/update/{id}',[LogoController::class,'updata']);
 Route::get('logos',[LogoController::class,'index']);
+Route::get('logotest',[LogoController::class,'logotest']);
+
+
 Route::get('logos/{id}',[LogoController::class,'show']);
 Route::delete('logos/{id}',[LogoController::class,'destroy']);
 Route::post('logos',[LogoController::class,'store']);
@@ -38,3 +41,4 @@ Route::post('type/div',[TypeDevController::class,'store']);
 
 
 //
+
