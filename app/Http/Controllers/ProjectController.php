@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Traits\CrudTrait;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -10,9 +11,16 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
+    use CrudTrait;
+    protected $model ;
+    public function __construct()
+    {
+        $this->model== new Project();
+    }
+
     public function index()
     {
-        //
+        return $this->model->all();
     }
 
     /**
