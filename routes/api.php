@@ -4,6 +4,7 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\ServesController;
 use App\Http\Controllers\ServesPageController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeDevController;
@@ -38,7 +39,7 @@ Route::post('serves',[ServesController::class,'store']);
 
 Route::post('serves/page',[ServesPageController::class,'store']);
 Route::post('type/div',[TypeDevController::class,'store']);
-
+Route::get('alldata',[TaskController::class,'index']);
 
 //
 
