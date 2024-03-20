@@ -8,6 +8,7 @@ use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeDevController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,6 @@ use App\Http\Controllers\TypeDevController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 Route::apiResource('contact', ContactController::class);
 Route::apiResource('subscribe',SubscribeController::class);
 Route::post('logos/update/{id}',[LogoController::class,'updata']);
@@ -35,11 +35,13 @@ Route::get('logos/{id}',[LogoController::class,'show']);
 Route::delete('logos/{id}',[LogoController::class,'destroy']);
 Route::post('logos',[LogoController::class,'store']);
 
-Route::post('serves',[ServesController::class,'store']);
-
-Route::post('serves/page',[ServesPageController::class,'store']);
-Route::post('type/div',[TypeDevController::class,'store']);
-Route::get('alldata',[TaskController::class,'index']);
-
 //
-
+Route::prefix('tasks')->group(function () {
+    Route::get('/', [TaskController::class, 'indexTasks']);
+    Route::post('/', [TaskController::class, 'storeTasks']);
+    Route::get('/{id}', [TaskController::class, 'showTasks']);
+    Route::put('/{id}', [TaskController::class, 'updateTasks']);
+    Route::delete('/{id}', [TaskController::class, 'destroyTasks']);
+});
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+Route::post('/auth/login', [AuthController::class, 'loginUser']);

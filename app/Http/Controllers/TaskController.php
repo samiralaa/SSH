@@ -9,64 +9,25 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     use CrudTrait;
-    /**
-     * Display a listing of the resource.
-     */
-    protected $model;
-    public function __construct()
+
+
+    public function indexTasks()
     {
-        $this->model = new Task();
-    }
-    public function index()
-    {
-return $this->model->all();
+        return $this->index(new Task());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function storeTask(Request $request)
     {
-        //
+        return $this->store($request, new Task());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function updateTask(Request $request, $id)
     {
-        //
+        return $this->update($request, new Task(), $id);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Task $task)
+    public function destroyTask($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Task $task)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Task $task)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Task $task)
-    {
-        //
+        return $this->destroy(new Task(), $id);
     }
 }

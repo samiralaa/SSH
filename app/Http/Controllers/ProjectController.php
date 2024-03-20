@@ -23,20 +23,10 @@ class ProjectController extends Controller
         return $this->model->all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $this->model->create($request->all());
+        return response()->json(['message'=>'created successfully'],201);
     }
 
     /**
